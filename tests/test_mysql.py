@@ -71,7 +71,8 @@ class TestNormalForm2(TestCase):
         self.assertEqual(len(columns), 9)
         self.assertTrue(all(map(lambda x: x == 6, columns)))
         values = [cell for row in cells for cell in row]
-        self.assertEqual(values.count('(ключ)'), 1)
+        text = ' '.join(values)
+        self.assertEqual(text.count('(ключ)'), 1)
 
     def test_students_sheet_is_correct(self):
         cells = get_cells(self.wb['students'])
@@ -80,19 +81,21 @@ class TestNormalForm2(TestCase):
         self.assertTrue(all(map(lambda x: x == 6, columns)))
         values = [cell for row in cells for cell in row]
         words = [
-            '(ключ)', 'Александр', 'Александра', 'Александровна', 'Анастасия',
-            'Андрей', 'Аркадьевич', 'Артамонова', 'Артём', 'Беляев', 'Василий',
+            'Александр', 'Александра', 'Александровна', 'Анастасия', 'Андрей',
+            'Аркадьевич', 'Артамонова', 'Артём', 'Беляев', 'Василий',
             'Винокуров', 'Дамирович', 'Евгений', 'Илларионов', 'Ильинична',
             'Ильич', 'Марковна', 'Митрофанова', 'Михайлович', 'Назаров',
             'Романович', 'Рыбакова', 'Тарасов', 'Татьяна',
         ]
         for word in words:
             self.assertEqual(values.count(word), 1)
+        text = ' '.join(values)
+        self.assertEqual(text.count('(ключ)'), 1)
 
 
 class TestNormalForm3(TestCase):
     def setUp(self):
-        self.wb = load_workbook('tables3.xlsx')
+        self.wb = load_workbook('table3.xlsx')
 
     def test_workbook_has_correct_sheets(self):
         self.assertIsNotNone(self.wb)

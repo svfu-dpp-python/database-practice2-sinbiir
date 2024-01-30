@@ -14,7 +14,5 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: |
-          sudo apt-get update
-          sudo apt-get install -y mysql-server mysql-client
-          sudo mysql -u root < export.sql
+          sudo pip install -U openpyxl
       - uses: education/autograding@v1
