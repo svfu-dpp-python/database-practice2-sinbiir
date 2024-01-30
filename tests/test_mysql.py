@@ -107,28 +107,28 @@ class TestNormalForm3(TestCase):
         self.assertIn('faculties', sheet_names)
         self.assertIn('levels', sheet_names)
 
-    # def test_employee_sheet_is_correct(self):
-    #     cells = get_cells(self.wb['employee'])
-    #     columns = [len(row) for row in cells]
-    #     self.assertEqual(len(columns), 11)
-    #     self.assertTrue(all(map(lambda x: x == 3, columns)))
-    #     values = [cell for row in cells for cell in row]
-    #     for val in self.positions:
-    #         self.assertNotIn(val, values)
-    #     for val in self.employee:
-    #         self.assertIn(val, values)
-    #
-    # def test_positions_sheet_is_correct(self):
-    #     cells = get_cells(self.wb['positions'])
-    #     columns = [len(row) for row in cells]
-    #     self.assertEqual(len(columns), 6)
-    #     self.assertTrue(all(map(lambda x: x == 3, columns)))
-    #     values = [cell for row in cells for cell in row]
-    #     for val in self.positions:
-    #         self.assertIn(val, values)
-    #     for val in self.employee:
-    #         self.assertNotIn(val, values)
-    #
+    def test_employee_sheet_is_correct(self):
+        cells = get_cells(self.wb['employee'])
+        columns = [len(row) for row in cells]
+        self.assertEqual(len(columns), 9)
+        self.assertTrue(all(map(lambda x: x == 3, columns)))
+        # values = [cell for row in cells for cell in row]
+        # for val in self.positions:
+        #     self.assertNotIn(val, values)
+        # for val in self.employee:
+        #     self.assertIn(val, values)
+
+    def test_positions_sheet_is_correct(self):
+        cells = get_cells(self.wb['specialties'])
+        columns = [len(row) for row in cells]
+        self.assertEqual(len(columns), 9)
+        self.assertTrue(all(map(lambda x: x == 4, columns)))
+        # values = [cell for row in cells for cell in row]
+        # for val in self.positions:
+        #     self.assertIn(val, values)
+        # for val in self.employee:
+        #     self.assertNotIn(val, values)
+
     # def test_students_sheet_is_correct(self):
     #     cells = get_cells(self.wb['students'])
     #     columns = [len(row) for row in cells]
@@ -139,7 +139,7 @@ class TestNormalForm3(TestCase):
     #         self.assertIn(val, values)
     #     for val in self.specialties:
     #         self.assertNotIn(val, values)
-    #
+
     # def test_specialty_sheet_is_correct(self):
     #     cells = get_cells(self.wb['specialty'])
     #     columns = [len(row) for row in cells]
